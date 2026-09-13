@@ -22,6 +22,14 @@
     if (e.key === 'Escape') setNav(false);
   });
 
+  // Join Us sidebar collapses into a dropdown on small screens
+  document.querySelectorAll('.folder-nav-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.parentElement.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
   // Fixed header appears once the original header has scrolled out of view
   var header = document.getElementById('header');
   function onScroll() {
@@ -54,7 +62,7 @@
     function stop() { clearInterval(timer); }
     show.addEventListener('mouseenter', stop);
     show.addEventListener('mouseleave', start);
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
+    if (show.hasAttribute('data-autoplay') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
   });
 
   // Lightbox for photo grids
@@ -102,6 +110,4 @@
     box.querySelector('.lb-close').focus();
   }
 
-  var year = document.getElementById('year');
-  if (year) year.textContent = new Date().getFullYear();
 })();

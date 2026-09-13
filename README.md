@@ -28,6 +28,7 @@ It's plain HTML/CSS/JS with no build step. Edit a file, commit, and push to `mai
 ## Editing notes
 
 - **Header and footer are repeated in every page.** If you add or rename a nav item, update the `<nav class="main-nav">` block, the `#fixedHeader` copy, and the `#sidecarNav` (mobile menu) in each `.html` file.
-- **Copy to fill in:** some pages (About Us, ERG-A-THON, Gala, and the two application pages) have short summary text in place of the full write-ups. Look for `<!-- Paste the official ... -->` comments to find where the official text goes. Mentor bios can go as a `<p>` under each person's role in `mentors.html`.
-- **Images** currently load from the Squarespace image CDN (`images.squarespace-cdn.com`). If the Squarespace site is ever shut down, those images will stop loading. To avoid that, download them into `assets/img/` and update the `src` URLs.
+- **Page layout** uses a simple 12-column grid carried over from Squarespace: a `<div class="row">` holds `<div class="col" style="--w:50%">` columns, and each column holds `.block` elements (text, images, buttons, galleries). Copy an existing block to add a new one.
+- **Images** live in `assets/img/<page>/`. Add a photo by dropping it into that folder and pointing an `<img src="...">` at it. Keep photos under ~1500px wide so pages load quickly.
+- **Mentor bios** are the `<figcaption class="caption-hover">` under each photo in `mentors.html`: they appear over the photo on hover, and below it on phones.
 - **Fonts:** Monda (headings and body) and Ubuntu (navigation and buttons), both from Google Fonts, same as the original site.
