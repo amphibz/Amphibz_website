@@ -2,7 +2,7 @@
 
 A static rebuild of [amphibious.mit.edu](https://amphibious.mit.edu/), hosted on GitHub Pages.
 
-**Live site:** https://jaybhan.github.io/Amphibz_website/
+**Live site:** https://amphibz.github.io/Amphibz_website/
 
 ## Structure
 
