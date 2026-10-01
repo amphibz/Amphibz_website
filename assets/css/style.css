@@ -447,6 +447,18 @@ hr { margin: 0; border: 0; border-top: 1px solid rgba(0, 0, 0, 0.12); }
 .slideshow .thumbnails button:hover { opacity: 1; }
 .slideshow .thumbnails img { display: block; height: 80px; width: auto; }
 
+/* Mentors listed by name only, in one row rather than stranded mid-column */
+.name-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+}
+
 .gallery-stacked img { display: block; width: 100%; height: auto; }
 
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
