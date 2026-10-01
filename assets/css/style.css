@@ -61,9 +61,33 @@ h3 { font-family: var(--font-body); font-size: 18px; font-weight: 700; letter-sp
   animation: header-anim 1s ease-in-out;
 }
 
-.logo { flex: 0 0 auto; width: 235px; max-width: 60%; margin: 0; font-size: 0; }
-.logo a { display: inline-block; }
-.logo img { display: block; width: auto; max-width: 100%; height: auto; max-height: 100px; }
+.logo { flex: 0 1 auto; min-width: 0; margin: 0; font-size: 0; }
+.logo a { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo img { flex: 0 0 auto; display: block; width: auto; max-width: 150px; height: auto; max-height: 72px; }
+
+/* Site name beside the wave, so every page says who we are */
+.site-name {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* MIT logo, top right. MIT's brand rules require clear space on every side equal to
+   the width of the M, which is 47% of the logo's width. --mit-w keeps the logo at or
+   above MIT's 30px minimum height (57px wide renders 30px tall). */
+.mit-logo {
+  --mit-w: 57px;
+  --mit-clear: calc(var(--mit-w) * 0.47);
+  flex: 0 0 auto;
+  display: block;
+  margin-left: var(--mit-clear);
+  margin-right: calc(var(--mit-clear) - 20px);
+}
+.mit-logo img { display: block; width: var(--mit-w); height: auto; }
 
 .main-nav { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
 
@@ -128,7 +152,8 @@ h3 { font-family: var(--font-body); font-size: 18px; font-weight: 700; letter-sp
   transition: transform 0.3s ease-in-out;
 }
 #fixedHeader .header-inner { padding: 10px 0; animation: none; }
-#fixedHeader .logo img { max-height: 50px; }
+#fixedHeader .logo img { max-height: 44px; }
+#fixedHeader .site-name { font-size: 16px; letter-spacing: 1.5px; }
 body.scrolled #fixedHeader { transform: translateY(0); }
 
 /* ---------- Mobile nav ---------- */
@@ -482,6 +507,9 @@ hr { margin: 0; border: 0; border-top: 1px solid rgba(0, 0, 0, 0.12); }
 .footer-inner { max-width: 1020px; margin: 0 auto; padding: 64px 32px; font-size: 14px; }
 .footer-inner a { color: rgba(255, 255, 255, 0.6); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 .footer-inner a:hover { color: #fff; border-bottom-color: #fff; }
+.footer-org { margin-bottom: 0.4em; line-height: 1.6em; }
+.footer-org strong { color: rgba(255, 255, 255, 0.7); }
+.footer-contact { margin-bottom: 1.6em; }
 .footer-inner figure { max-width: 512px; margin: 48px auto 0; }
 .footer-inner figure img { display: block; width: 100%; }
 .footer-inner figcaption { padding-top: 16px; font-size: 12px; letter-spacing: 1px; }
@@ -494,9 +522,18 @@ hr { margin: 0; border: 0; border-top: 1px solid rgba(0, 0, 0, 0.12); }
   .banner { padding: 60px 0 20px; }
 }
 
-@media (max-width: 1100px) {
+/* Keep the nav on one line now that the site name and MIT logo share the row */
+@media (max-width: 1500px) {
+  .main-nav a,
+  .main-nav .folder-toggle { padding: 0.75em 0.7em; }
+  .main-nav .nav-button a { margin-left: 0.6em; padding: 0.9em 1.1em; }
+  .site-name { font-size: 19px; letter-spacing: 1.5px; }
+  .logo img { max-height: 62px; max-width: 130px; }
+}
+
+@media (max-width: 1280px) {
   .header-inner > .main-nav { display: none; }
-  .mobile-nav-toggle { display: block; }
+  .mobile-nav-toggle { display: block; margin-left: calc(57px * 0.47); }
 }
 
 @media (max-width: 767px) {
@@ -525,7 +562,9 @@ hr { margin: 0; border: 0; border-top: 1px solid rgba(0, 0, 0, 0.12); }
 }
 
 @media (max-width: 640px) {
-  .logo img { max-height: 50px; }
+  .logo a { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .logo img { max-height: 34px; max-width: 80px; }
+  .site-name { font-size: 12px; letter-spacing: 1px; }
   .banner { padding: 100px 0 40px; }
   .desc-wrapper { padding: 20px; }
   .desc-wrapper .banner-sub { font-size: 18px; letter-spacing: 3px; margin: 12px auto; }
